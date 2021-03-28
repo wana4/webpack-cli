@@ -6,6 +6,7 @@ const stripAnsi = require('strip-ansi');
 const path = require('path');
 const fs = require('fs');
 const execa = require('execa');
+const internalIp = require('internal-ip');
 const { exec } = require('child_process');
 const { node: execaNode } = execa;
 const { Writable } = require('readable-stream');
@@ -312,6 +313,43 @@ const uniqueDirectoryForTest = async (assetsPath) => {
 
 const normalizeStdout = (string) => stripAnsi(string);
 
+const normalizeStderr = (stderr, options = {}) => {
+    let normalizedStderr = stderr;
+
+    normalizedStderr = normalizedStderr.replace(/\\/g, '/').replace(new RegExp(process.cwd().replace(/\\/g, '/'), 'g'), '<cwd>');
+
+    const networkIPv4 = internalIp.v4.sync();
+
+    if (networkIPv4) {
+        normalizedStderr = normalizedStderr.replace(new RegExp(networkIPv4, 'g'), '<network-ip-v4>');
+    }
+
+    const networkIPv6 = internalIp.v6.sync();
+
+    if (networkIPv6) {
+        normalizedStderr = normalizedStderr.replace(new RegExp(networkIPv6, 'g'), '<network-ip-v6>');
+    }
+
+    normalizedStderr = normalizedStderr.replace(/:[0-9]+\//g, ':<port>/');
+
+    if (options.ipv6 && !networkIPv6) {
+        // Github Actions doesnt' support IPv6 on ubuntu in some cases
+        normalizedStderr = normalizedStderr.split('\n');
+
+        const ipv4MessageIndex = normalizedStderr.findIndex((item) => /On Your Network \(IPv4\)/.test(item));
+
+        normalizedStderr.splice(
+            ipv4MessageIndex + 1,
+            0,
+            '<i> [webpack-dev-server] On Your Network (IPv6): http://[<network-ip-v6>]:<port>/',
+        );
+
+        normalizedStderr = normalizedStderr.join('\n');
+    }
+
+    return normalizedStderr;
+};
+
 module.exports = {
     run,
     runWatch,
@@ -329,4 +367,5 @@ module.exports = {
     isWebpack5,
     isDevServer4,
     isWindows,
+    normalizeStderr,
 };
