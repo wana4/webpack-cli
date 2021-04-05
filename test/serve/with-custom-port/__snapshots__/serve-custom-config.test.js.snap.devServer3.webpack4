@@ -1,0 +1,7 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`serve with devServer in config Port flag should override the config port 1`] = `""`;
+
+exports[`serve with devServer in config Should pick up the host and port from config 1`] = `""`;
+
+exports[`serve with devServer in config works fine when no-hot flag is passed alongside other server config 1`] = `""`;

@@ -440,8 +440,7 @@ describe('basic serve usage', () => {
         const { exitCode, stdout, stderr } = await runWatch(testPath, ['serve', '--watch']);
 
         expect(exitCode).toBe(2);
-        expect(stderr).toContain("Error: Unknown option '--watch'");
-        expect(stderr).toContain("Run 'webpack --help' to see available commands and options");
+        expect(stderr).toMatchSnapshot();
         expect(stdout).toBeFalsy();
     });
 
@@ -449,8 +448,7 @@ describe('basic serve usage', () => {
         const { exitCode, stdout, stderr } = await runWatch(testPath, ['serve', '-w']);
 
         expect(exitCode).toBe(2);
-        expect(stderr).toContain("Error: Unknown option '-w'");
-        expect(stderr).toContain("Run 'webpack --help' to see available commands and options");
+        expect(stderr).toMatchSnapshot();
         expect(stdout).toBeFalsy();
     });
 
@@ -458,7 +456,7 @@ describe('basic serve usage', () => {
         const { exitCode, stdout, stderr } = await runWatch(testPath, ['serve', '--port', port, '--unknown-flag']);
 
         expect(exitCode).toBe(2);
-        expect(stderr).toContain("Error: Unknown option '--unknown-flag'");
+        expect(stderr).toMatchSnapshot();
         expect(stdout).toBeFalsy();
     });
 });
