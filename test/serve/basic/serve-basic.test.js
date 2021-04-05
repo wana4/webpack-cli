@@ -418,6 +418,14 @@ describe('basic serve usage', () => {
         }
     });
 
+    it('should shoe help information for serve', async () => {
+        const { exitCode, stderr, stdout } = await runWatch(__dirname, ['serve', '--help']);
+
+        expect(exitCode).toBe(0);
+        expect(stderr).toMatchSnapshot();
+        expect(stdout).toMatchSnapshot();
+    });
+
     it('should log used supplied config with serve', async () => {
         const { stderr, stdout } = await runWatch(__dirname, ['serve', '--config', 'log.config.js', '--port', port]);
         const configPath = path.resolve(__dirname, './log.config.js');
