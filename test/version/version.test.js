@@ -3,7 +3,10 @@
 const { run } = require('../utils/test-utils');
 
 const serializeSnapshot = (output) => {
-    return output.replace(/\d+.\d+.\d+/g, 'x.x.x');
+    return output.replace(
+        /(?<=^v?|\sv?)(?:(?:0|[1-9]\d*)\.){2}(?:0|[1-9]\d*)(?:-(?:0|[1-9]\d*|[\da-z-]*[a-z-][\da-z-]*)(?:\.(?:0|[1-9]\d*|[\da-z-]*[a-z-][\da-z-]*))*)?(?:\+[\da-z-]+(?:\.[\da-z-]+)*)?\b/gi,
+        'x.x.x',
+    );
 };
 
 describe('single version flag', () => {
