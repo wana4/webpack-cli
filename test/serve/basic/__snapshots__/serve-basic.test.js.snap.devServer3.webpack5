@@ -1,0 +1,45 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`basic serve usage should respect the "publicPath" option from configuration 1`] = `""`;
+
+exports[`basic serve usage should respect the "publicPath" option from configuration using multi compiler mode (from the "devServer" options) 1`] = `""`;
+
+exports[`basic serve usage should respect the "publicPath" option from configuration using multi compiler mode 1`] = `""`;
+
+exports[`basic serve usage should work 1`] = `""`;
+
+exports[`basic serve usage should work in multi compiler mode 1`] = `""`;
+
+exports[`basic serve usage should work with "--hot" and "--port" options 1`] = `""`;
+
+exports[`basic serve usage should work with entries syntax 1`] = `""`;
+
+exports[`basic serve usage should work with the "--config" and "--env" options 1`] = `""`;
+
+exports[`basic serve usage should work with the "--config" and "--env" options and expose dev server options 1`] = `""`;
+
+exports[`basic serve usage should work with the "--config" option 1`] = `""`;
+
+exports[`basic serve usage should work with the "--hot" option 1`] = `""`;
+
+exports[`basic serve usage should work with the "--hot" option using the "only" value 1`] = `""`;
+
+exports[`basic serve usage should work with the "--mode" option #2 1`] = `""`;
+
+exports[`basic serve usage should work with the "--mode" option #3 1`] = `""`;
+
+exports[`basic serve usage should work with the "--mode" option 1`] = `""`;
+
+exports[`basic serve usage should work with the "--no-hot" option 1`] = `""`;
+
+exports[`basic serve usage should work with the "--open" option 1`] = `""`;
+
+exports[`basic serve usage should work with the "--output-public-path" option 1`] = `""`;
+
+exports[`basic serve usage should work with the "--port" option 1`] = `""`;
+
+exports[`basic serve usage should work with the "--stats verbose" option 1`] = `""`;
+
+exports[`basic serve usage should work with the "--stats" option 1`] = `""`;
+
+exports[`basic serve usage should work with the default "publicPath" option 1`] = `""`;
