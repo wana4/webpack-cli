@@ -1,5 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`basic serve usage should log an error on unknown flag 1`] = `
+"[webpack-cli] Error: Unknown option '--unknown-flag'
+[webpack-cli] Run 'webpack --help' to see available commands and options"
+`;
+
+exports[`basic serve usage should log error on using '--watch' flag with serve 1`] = `
+"[webpack-cli] Error: Unknown option '--watch'
+[webpack-cli] Run 'webpack --help' to see available commands and options"
+`;
+
+exports[`basic serve usage should log error on using '-w' alias with serve 1`] = `
+"[webpack-cli] Error: Unknown option '-w'
+[webpack-cli] Run 'webpack --help' to see available commands and options"
+`;
+
 exports[`basic serve usage should respect the "publicPath" option from configuration 1`] = `""`;
 
 exports[`basic serve usage should respect the "publicPath" option from configuration using multi compiler mode (from the "devServer" options) 1`] = `""`;
