@@ -313,7 +313,7 @@ const uniqueDirectoryForTest = async (assetsPath) => {
 
 const normalizeStdout = (string) => stripAnsi(string);
 
-const normalizeStderr = (stderr, options = {}) => {
+const normalizeStderr = (stderr) => {
     let normalizedStderr = stderr;
 
     normalizedStderr = normalizedStderr.replace(/\\/g, '/').replace(new RegExp(process.cwd().replace(/\\/g, '/'), 'g'), '<cwd>');
@@ -332,7 +332,7 @@ const normalizeStderr = (stderr, options = {}) => {
 
     normalizedStderr = normalizedStderr.replace(/:[0-9]+\//g, ':<port>/');
 
-    if (options.ipv6 && !networkIPv6) {
+    if (!networkIPv6) {
         // Github Actions doesnt' support IPv6 on ubuntu in some cases
         normalizedStderr = normalizedStderr.split('\n');
 
