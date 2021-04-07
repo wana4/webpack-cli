@@ -9,7 +9,7 @@ const snapshotExtension = `.snap.webpack${webpackVersion}`;
 const snapshotExtensionForServe = `.snap.devServer${devServerVersion}.webpack${webpackVersion}`;
 
 const helpCommandTestDir = path.resolve(__dirname, '../test/help');
-const serveCommandTestDir = path.resolve(__dirname, '../test/help');
+const serveCommandTestDir = path.resolve(__dirname, '../test/serve');
 
 module.exports = {
     resolveSnapshotPath: (testPath) => {
