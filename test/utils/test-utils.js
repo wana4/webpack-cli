@@ -311,9 +311,19 @@ const uniqueDirectoryForTest = async (assetsPath) => {
     return result;
 };
 
-const normalizeStdout = (string) => stripAnsi(string);
+const normalizeStdout = (stdout) => {
+    if (stdout.length === 0) {
+        return stdout;
+    }
+
+    return stripAnsi(stdout);
+};
 
 const normalizeStderr = (stderr) => {
+    if (stderr.length === 0) {
+        return stderr;
+    }
+
     let normalizedStderr = stderr;
 
     normalizedStderr = normalizedStderr.replace(/\\/g, '/').replace(new RegExp(process.cwd().replace(/\\/g, '/'), 'g'), '<cwd>');
@@ -338,11 +348,13 @@ const normalizeStderr = (stderr) => {
 
         const ipv4MessageIndex = normalizedStderr.findIndex((item) => /On Your Network \(IPv4\)/.test(item));
 
-        normalizedStderr.splice(
-            ipv4MessageIndex + 1,
-            0,
-            '<i> [webpack-dev-server] On Your Network (IPv6): http://[<network-ip-v6>]:<port>/',
-        );
+        if (ipv4MessageIndex !== -1) {
+            normalizedStderr.splice(
+                ipv4MessageIndex + 1,
+                0,
+                '<i> [webpack-dev-server] On Your Network (IPv6): http://[<network-ip-v6>]:<port>/',
+            );
+        }
 
         normalizedStderr = normalizedStderr.join('\n');
     }
