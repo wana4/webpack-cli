@@ -13,7 +13,6 @@ describe('mode flags with config', () => {
         expect(stdout).toBeTruthy();
 
         // Should generate the appropriate files
-        expect(existsSync(resolve(__dirname, './dist/main.js.OTHER.LICENSE.txt'))).toBeTruthy();
         expect(existsSync(resolve(__dirname, './dist/main.js'))).toBeTruthy();
         expect(existsSync(resolve(__dirname, './dist/main.js.map'))).toBeFalsy();
 
@@ -37,7 +36,6 @@ describe('mode flags with config', () => {
         expect(stdout).toBeTruthy();
 
         // Should generate the appropriate files
-        expect(existsSync(resolve(__dirname, './dist/main.js.OTHER.LICENSE.txt'))).toBeTruthy();
         expect(existsSync(resolve(__dirname, './dist/main.js'))).toBeTruthy();
         expect(existsSync(resolve(__dirname, './dist/main.js.map'))).toBeFalsy();
 
@@ -61,8 +59,6 @@ describe('mode flags with config', () => {
         expect(stdout).toBeTruthy();
 
         // Should generate the appropriate files
-        // Should generate the appropriate files
-        expect(existsSync(resolve(__dirname, './dist/main.js.OTHER.LICENSE.txt'))).toBeTruthy();
         expect(existsSync(resolve(__dirname, './dist/main.js'))).toBeTruthy();
         expect(existsSync(resolve(__dirname, './dist/main.js.map'))).toBeFalsy();
 
