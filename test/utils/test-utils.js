@@ -326,9 +326,6 @@ const normalizeStderr = (stderr) => {
 
     let normalizedStderr = stderr;
 
-    console.log(process.cwd());
-    console.log(new RegExp(process.cwd().replace(/\\/g, '/'), 'g'));
-
     normalizedStderr = normalizedStderr.replace(/\\/g, '/').replace(new RegExp(process.cwd().replace(/\\/g, '/'), 'g'), '<cwd>');
 
     const networkIPv4 = internalIp.v4.sync();
